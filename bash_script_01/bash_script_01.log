@@ -1,0 +1,8 @@
+Date 	User 	PID 	Function 	Message
+02/17/21 16:42:21 root 4942 directories_list Printing directories list:
+02/17/21 16:42:21 root 4942 files_list Printing files list:
+02/17/21 16:42:22 root 4942 system_info Printing System state:
+02/17/21 16:42:22 root 4942 modify_hosts_rewrite Asking user to confirm rewrite.
+02/17/21 16:42:23 root 4942 modify_hosts_rewrite Target Line discovered. Line number: 10
+02/17/21 16:42:24 root 4942 modify_hosts_rewrite Removing string
+02/17/21 16:42:24 root 4942 delete_me File discovered.

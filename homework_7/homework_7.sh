@@ -1,4 +1,8 @@
 #!/bin/bash
+help() {
+  echo "Help triggered"
+}
+
 read_servers_list () {
   COUNTER=0
   while IFS= read -r line;
@@ -33,6 +37,15 @@ print_array_elements () {
   echo ${LIST[0]}
   echo ${LIST[-1]}
 }
+
+while getopts ":h" option; 
+do
+  case $option in
+    h)
+      help
+      exit;;
+  esac
+done
 
 read_servers_list
 convert_to_uppercase "test"

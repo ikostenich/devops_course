@@ -1,1 +1,0 @@
-{"Id":"Policy1537365823345","Version":"2012-10-17","Statement":[{"Sid":"Stmt1537365816157","Action":["s3:CreateBucket"],"Effect":"Deny","Resource":["arn:aws:s3:::test1","arn:aws:s3:::backup-test*","arn:aws:s3:::hw12-bucket"],"Principal":"*"}]}

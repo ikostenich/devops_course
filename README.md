@@ -34,3 +34,23 @@
   
   ![image](https://user-images.githubusercontent.com/18323106/114425191-835f8200-9bc1-11eb-80e3-cd8274db9469.png)
 
+6. Create hw202 role. Add next features to this role. All options should be set as variables:
+
+  ![image](https://user-images.githubusercontent.com/18323106/114897510-f9f6bc80-9e19-11eb-9cc8-e2b52c958432.png)
+
+
+  a. Add the ability to copy local files to any location.
+    ![image](https://user-images.githubusercontent.com/18323106/114897603-11ce4080-9e1a-11eb-9ab4-37398c5dda79.png)
+
+  b. Install curl from deb(ubuntu) and rpm(centos) packages which located in the role under file folder. 
+    ![image](https://user-images.githubusercontent.com/18323106/114897656-1eeb2f80-9e1a-11eb-926c-ad6da90eb70e.png)
+
+  c. Add ability to set permissions for these files.
+    ![image](https://user-images.githubusercontent.com/18323106/114897765-39bda400-9e1a-11eb-9cc6-3856ab8fdcf6.png)
+
+  d.Template. Create a file /HW20_FILE_INFO with content of a variable group_hw20
+    ![image](https://user-images.githubusercontent.com/18323106/114897816-46da9300-9e1a-11eb-8bd3-bf81a6d0663f.png)
+
+
+
+![image](https://user-images.githubusercontent.com/18323106/114897336-cddb3b80-9e19-11eb-8110-f053cdd210ac.png)

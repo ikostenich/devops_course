@@ -13,7 +13,7 @@
 #   - python3  
 
 - name: Copy file to host
-  copy: src={{ item }} dest={{ destination_folder }} mode=0655
+  copy: src={{ item }} dest={{ destination_folder }} mode=0666
   loop:
     - "test01.txt"
     - "test02.txt"
@@ -27,4 +27,3 @@
 
 - name: Copy j2 template file from host
   template: "src={{ j2_filename }} dest={{ destination_folder }}"
-  

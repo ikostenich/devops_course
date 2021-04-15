@@ -1,0 +1,5 @@
+---
+# vars file for hw202
+destination_folder: /opt/temp_1/
+curl_package_filename: curl_7.58.0-2ubuntu3_amd64.deb
+j2_filename: HW20_FILE_INFO.j2

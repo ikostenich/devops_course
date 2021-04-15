@@ -29,5 +29,3 @@
   git:
     repo: 'https://github.com/octocat/Hello-World.git'
     dest: /opt/hw20/hello-world
-
-  

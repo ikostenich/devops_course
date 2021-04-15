@@ -1,0 +1,30 @@
+---
+# tasks file for hw202
+- name: Ping my servers
+  ping:
+
+# - name: Install git, docker, python3
+#   package:
+#     name: "{{item}}"
+#     state: present
+#   loop:
+#   - git
+#   - docker
+#   - python3  
+
+- name: Copy file to host
+  copy: src={{ item }} dest={{ destination_folder }} mode=0655
+  loop:
+    - "test01.txt"
+    - "test02.txt"
+
+- name: Copy deb package from host
+  copy: "src={{ curl_package_filename }} dest={{ destination_folder }}"
+
+- name: Install my_package
+  apt: deb="{{ destination_folder }}/{{ curl_package_filename }}"
+  become: yes
+
+- name: Copy j2 template file from host
+  template: "src={{ j2_filename }} dest={{ destination_folder }}"
+  

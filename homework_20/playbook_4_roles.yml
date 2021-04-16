@@ -1,0 +1,8 @@
+---
+- name: HW20 Step 6
+  hosts: Group_2
+  become: yes
+
+  roles:
+  - hw202
+  

@@ -1,0 +1,2 @@
+ansible_user: i_kostenich
+ansible_sudo_pass: test123

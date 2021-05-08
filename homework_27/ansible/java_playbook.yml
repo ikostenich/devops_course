@@ -1,0 +1,22 @@
+---
+- hosts: all
+  tasks:
+  - name: Install the latest versions
+  become: true
+  ansible.builtin.package:
+    name:
+      - software-properties-common
+      - apt-transport-https
+    state: latest
+
+  - name: Add docker repo
+  become: true
+  ansible.builtin.apt_repository:
+    repo: 'ppa:openjdk-r/ppa'
+  
+  - name: Install the latest version
+    become: true
+    ansible.builting.package:
+      name:
+        - openjdk-8-jdk
+      state: latest  

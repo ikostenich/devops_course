@@ -7,11 +7,9 @@ ARG ANSIBLE_VERSION=2.10.7
 # install plugins
 
 RUN /usr/local/bin/install-plugins.sh ssh-slaves \
-  email-et \
   mailer \
   greenballs \
   simple-theme-plugin \
-  parametrized-trigger \
   rebuild \
   github \
   mask-passwords \
@@ -42,5 +40,15 @@ RUN add-apt-repository \
        "deb [arch=amd64] https://download.docker.com/linux/debian \
        $(lsb_release -cs) stable"
 RUN apt-get update && apt-get install -y docker-ce-cli
+RUN apt-get update && \
+  apt-get install -y gcc python-dev libkrb5-dev && \
+  apt-get install python3-pip -y && \
+  pip3 install --upgrade pip && \
+  pip3 install --upgrade virtualenv && \
+  pip3 install pywinrm[kerberos] && \
+  apt install krb5-user -y && \ 
+  pip3 install pywinrm && \
+  pip3 install ansible
+
 USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean:1.24.6 docker-workflow:1.26"

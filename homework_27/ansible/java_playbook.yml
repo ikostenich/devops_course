@@ -15,8 +15,8 @@
     repo: 'ppa:openjdk-r/ppa'
   
   - name: Install the latest version
-    become: true
-    ansible.builting.package:
-      name:
-        - openjdk-8-jdk
-      state: latest  
+  become: true
+  ansible.builting.package:
+    name:
+      - openjdk-8-jdk
+    state: latest  

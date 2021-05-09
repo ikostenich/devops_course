@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'FOLDER', defaultValue: 'scripts', description:
+        'select folder inside homework_28 with scripts to verify. Leave empty to work in the root of homework_28')
+    }
+
+    triggers {
+        pollSCM 'H * * * *'
+    }
+
+    stages {
+        stage('checkout') {
+            steps {
+                checkout([$class: 'GitSCM',
+                branches: [[name: '*/main']],
+                userRemoteConfigs: [[url: 'https://github.com/ikostenich/devops_course.git']],
+                credentialsId: 'jenkins'
+                ])
+            }
+        }
+
+        stage('Step 1: check current location') {
+            steps {
+                parallel (
+                    'Check location': {
+                        sh 'pwd'
+                        sh 'ls'
+                    }
+                )
+            }
+        }
+
+        stage('Step 2: install spellcheck on Jenkins host') {
+            steps {
+                    dir('homework_28/ansible') {
+                        sh 'ansible-playbook install_spellcheck.yml'
+                    }
+            }
+        }
+
+        stage('Step 4: run spellcheck') {
+            steps {
+                    dir("homework_28/$FOLDER") {
+                        sh 'shellcheck ../scripts/*.sh'
+                    }
+            }
+        }
+    }
+}

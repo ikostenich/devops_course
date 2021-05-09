@@ -1,0 +1,16 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: Update and upgrade apt packages
+    become: true
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400 #One day
+
+  - name: Install spellcheck
+    become: true
+    apt:
+      name: shellcheck
+      state: present

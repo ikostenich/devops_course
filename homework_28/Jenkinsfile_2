@@ -1,0 +1,47 @@
+pipeline {
+        agent any
+
+        parameters {
+            string(name: 'FOLDER', defaultValue: 'homework_28', description:
+            'select folder with Dockerfile to verify.')
+            string(name: 'DOCKERFILE_NAME', defaultValue: 'Dockerfile', description:
+            'Enter the name of Dockerfile')
+        }
+
+        triggers {
+            pollSCM 'H * * * *'
+        }
+
+        stages {
+            stage('checkout') {
+                steps {
+                    checkout([$class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[url: 'https://github.com/ikostenich/devops_course.git']],
+                    credentialsId: 'jenkins'
+                    ])
+                }
+            }
+
+            stage('Step 1: install docker') {
+                steps {
+                    dir('homework_28/ansible') {
+                        sh 'ansible-playbook install_docker.yml'
+                    }
+                }
+            }
+
+            stage('Build') {
+                agent {
+                    docker {
+                        image 'projectatomic/dockerfile-lint'
+                        // Run the container on the node specified at the top-level of the Pipeline, in the same workspace, rather than on a new node entirely:
+                        reuseNode true
+                    }
+                }
+                steps {
+                    sh 'dockerfile_lint Dockerfile'
+                }
+            }
+        }
+}

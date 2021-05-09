@@ -1,0 +1,27 @@
+---
+- hosts: all
+  tasks:
+  - name: Update and upgrade apt packages
+    become: true
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400 #One day
+
+  - name: Install software-properties-common
+    become: true
+    apt:
+      name: apache2software-properties-common
+      state: present
+
+  - name: Add ansible repository
+    become: true
+    ansible.builtin.apt_repository:
+      repo: 'ppa:ansible/ansible'
+      state: present
+  
+  - name: Install the latest ansible version
+    become: true
+    apt:
+      name: ansible
+      state: present

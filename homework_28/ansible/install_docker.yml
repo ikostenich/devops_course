@@ -40,7 +40,7 @@
         enabled: yes
     - name: Add the user to docker group
       ansible.builtin.user:
-        name: jenkins
+        name: i_kostenich
         group: docker
   handlers:
   - name: restart docker

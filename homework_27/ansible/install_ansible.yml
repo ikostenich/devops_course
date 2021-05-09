@@ -11,7 +11,7 @@
   - name: Install software-properties-common
     become: true
     apt:
-      name: apache2software-properties-common
+      name: software-properties-common
       state: present
 
   - name: Add ansible repository

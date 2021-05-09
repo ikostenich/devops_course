@@ -42,9 +42,15 @@ pipeline {
 
         stage('Step 4: run spellcheck') {
             steps {
-                    dir("homework_28/$FOLDER") {
-                        sh 'shellcheck ../scripts/*.sh'
+                    script {
+                        try {
+                            dir("homework_28/$FOLDER") {
+                            sh 'set +e; shellcheck ../scripts/*.sh'
+                            }
+                            }
+                        catch (err) {
                     }
+                }
             }
         }
     }

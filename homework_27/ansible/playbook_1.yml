@@ -1,6 +1,6 @@
 ---
 - name: Test Connection to my servers
-  hosts: host_1
+  hosts: linux
 
   tasks:
   - name: Ping my servers
